@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Password;
 use Statamic\Auth\Passwords\PasswordReset;
 use Statamic\Contracts\Auth\User as UserContract;
 use Statamic\Contracts\Data\Augmentable;
+use Statamic\Contracts\Data\Augmented;
 use Statamic\Data\HasAugmentedInstance;
 use Statamic\Data\TracksQueriedColumns;
 use Statamic\Events\UserDeleted;
@@ -96,7 +97,7 @@ abstract class User implements
         return Statamic::apiRoute('users.show', $this->id());
     }
 
-    public function newAugmentedInstance()
+    public function newAugmentedInstance() : Augmented
     {
         return new AugmentedUser($this);
     }
